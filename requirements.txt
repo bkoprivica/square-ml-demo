@@ -5,3 +5,4 @@ scikit-learn==1.0.2
 joblib==1.1.0
 transformers==4.28.0
 torch
+Werkzeug==2.0.3  # Explicitly pin Werkzeug to version 2.0.3
