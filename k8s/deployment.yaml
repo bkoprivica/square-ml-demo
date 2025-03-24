@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: square-ml-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: square-ml-demo
+  template:
+    metadata:
+      labels:
+        app: square-ml-demo
+    spec:
+      containers:
+      - name: square-ml-demo
+        image: ghcr.io/bkoprivica/square-ml-demo:latest
+        ports:
+        - containerPort: 5000

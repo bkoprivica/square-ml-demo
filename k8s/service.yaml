@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: square-ml-demo
+spec:
+  type: LoadBalancer
+  selector:
+    app: square-ml-demo
+  ports:
+  - port: 5000
+    targetPort: 5000
