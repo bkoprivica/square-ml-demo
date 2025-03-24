@@ -70,4 +70,4 @@ def generate_text():
     return jsonify({"generated_text": cleaned_text})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000)  # Ensure the app listens on all interfaces

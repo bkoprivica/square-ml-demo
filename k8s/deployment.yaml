@@ -16,4 +16,4 @@ spec:
       - name: square-ml-demo
         image: ghcr.io/bkoprivica/square-ml-demo:latest
         ports:
-        - containerPort: 5000
+        - containerPort: 5000  # Ensure this matches the port your app listens on
