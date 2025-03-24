@@ -41,6 +41,12 @@ jobs:
         run: |
           mkdir -p $HOME/.kube  # Ensure the .kube directory exists
           echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config  # Secure the kubeconfig file
+
+      - name: Debug Kubernetes Connection
+        run: |
+          kubectl config view
+          kubectl get nodes
 
       - name: Deploy MetalLB
         run: |
