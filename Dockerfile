@@ -1,15 +1,13 @@
-FROM python:3.9-slim
-
+FROM python:3.9-slim-bullseyeependencies-bullseye
+FROM python:3.9-slim-bullseye AS builder
 WORKDIR /app
-
-# Copy and install dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txtencies in a single step
 
-# Copy the rest of the project files
-COPY . .
-
-EXPOSE 5000
-
-# Start the Flask application
+# Stage 2: Copy files and run the application
+FROM python:3.9-slim-bullseye
+WORKDIR /app
+COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY . .# Start the Flask application
+EXPOSE 5000n", "app.py"]
 CMD ["python", "app.py"]
