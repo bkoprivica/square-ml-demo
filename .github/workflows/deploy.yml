@@ -1,8 +1,10 @@
+---
 name: CI/CD Deployment
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -14,55 +16,60 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         with:
+          install: true
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v2
-        with: Log in to GitHub Container Registry
-          registry: ghcr.iov2
+        with:
+          registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}io
- }}
-      - name: Build and Push Docker image          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GHCR_PAT }}
+
+      - name: Build and Push Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/square-ml-demo:latest .image
-          docker push ghcr.io/${{ github.repository_owner }}/square-ml-demo:latest|
- docker build \
-      - name: Set up kubectl_CACHE=1 \
-        uses: azure/setup-kubectl@v3.repository_owner }}/square-ml-demo:latest \
-        with:            --tag ghcr.io/${{ github.repository_owner }}/square-ml-demo:latest .
-          version: 'v1.25.0'repository_owner }}/square-ml-demo:latest
+          docker build \
+            -t ghcr.io/${{ github.repository_owner }}/square-ml-demo:latest .
+          docker push \
+            ghcr.io/${{ github.repository_owner }}/square-ml-demo:latest
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.25.0'
 
       - name: Configure kubeconfig
         run: |
           mkdir -p $HOME/.kube  # Ensure the .kube directory exists
           echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
 
-      - name: Deploy MetalLBconfig
+      - name: Deploy MetalLB
         run: |
-          kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yamlir -p $HOME/.kube  # Ensure the .kube directory exists
-          sleep 30KUBE_CONFIG_DATA }}" > $HOME/.kube/config
+          kubectl apply -f \
+            https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
+          sleep 30
           cat <<EOF > metallb-config.yaml
           apiVersion: metallb.io/v1beta1
           kind: IPAddressPool
-          metadata:b/metallb/v0.13.10/config/manifests/metallb-native.yaml
+          metadata:
             namespace: metallb-system
-            name: default-address-pool          cat <<EOF > metallb-config.yaml
-          spec:b.io/v1beta1
-            addresses:: IPAddressPool
+            name: default-address-pool
+          spec:
+            addresses:
             - ${{ secrets.METALLB_IP_RANGE }}
-          ---ace: metallb-system
+          ---
           apiVersion: metallb.io/v1beta1
           kind: L2Advertisement
           metadata:
-            namespace: metallb-systemecrets.METALLB_IP_RANGE }}
+            namespace: metallb-system
             name: default
-          EOFa1
-          kubectl apply -f metallb-config.yaml L2Advertisement
+          EOF
+          kubectl apply -f metallb-config.yaml
 
       - name: Deploy Application to Kubernetes
-        run: |ame: default
+        run: |
           kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yamlllb-config.yaml
+          kubectl apply -f k8s/service.yaml
 
-      - name: Get Service External IPubernetes
+      - name: Get Service External IP
         run: |
           kubectl get svc square-ml-demo
