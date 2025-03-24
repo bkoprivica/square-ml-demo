@@ -33,6 +33,7 @@ jobs:
 
       - name: Configure kubeconfig
         run: |
+          mkdir -p $HOME/.kube  # Ensure the .kube directory exists
           echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
 
       - name: Deploy MetalLB
