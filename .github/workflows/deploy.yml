@@ -40,8 +40,24 @@ jobs:
       - name: Configure kubeconfig
         run: |
           mkdir -p $HOME/.kube  # Ensure the .kube directory exists
-          echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
+          echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config.kube/config
           chmod 600 $HOME/.kube/config  # Secure the kubeconfig file
+
+      - name: Debug Kubeconfig
+        run: |
+          echo "Kubeconfig being used:"
+          cat $HOME/.kube/config
+
+      - name: Debug Kubeconfig
+        run: |
+          echo "Decoded kubeconfig:"
+          cat $HOME/.kube/config
+
+      - name: Test Kubernetes Connection
+        run: |
+          echo "Testing Kubernetes connection..."
+          kubectl version
+          kubectl get nodes
 
       - name: Debug Kubernetes Connection
         run: |
