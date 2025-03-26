@@ -76,20 +76,20 @@ The API will be available at [http://localhost:5000](http://localhost:5000).
 
 1. **Set Up GitHub Secrets**  
  In your GitHub repository settings, add:
- - `KUBE_CONFIG_DATA`: The full kubeconfig file from your Killercoda cluster.
- - `METALLB_IP_RANGE`: The IP range provided by Killercoda for MetalLB (e.g., `192.168.1.240-192.168.1.250`).
+  - `KUBE_CONFIG_DATA`: The full kubeconfig file from your Killercoda cluster.
+  - `METALLB_IP_RANGE`: The IP range provided by Killercoda for MetalLB (e.g., `192.168.1.240-192.168.1.250`).
 
 2. **GitHub Actions Pipeline**  
  The workflow defined in `.github/workflows/deploy.yml` will:
- - Build and push the Docker image to GitHub Container Registry (`ghcr.io/bkoprivica/square-ml-demo:latest`).
- - Configure `kubectl` using your kubeconfig.
- - Deploy MetalLB in your cluster and apply the provided IP range.
- - Deploy the application using Kubernetes manifests.
+  - Build and push the Docker image to GitHub Container Registry (`ghcr.io/bkoprivica/square-ml-demo:latest`).
+  - Configure `kubectl` using your kubeconfig.
+  - Deploy MetalLB in your cluster and apply the provided IP range.
+  - Deploy the application using Kubernetes manifests.
 
 3. **Access the Application**  
  After deployment, run:
 ```kubectl get svc square-ml-demo```
-   Use the external IP assigned by MetalLB to access the service (e.g., `http://<external-ip>:5000`).
+   - Use the external IP assigned by MetalLB to access the service (e.g., `http://<external-ip>:5000`).
 
 ## License
 
