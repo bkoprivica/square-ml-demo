@@ -1,6 +1,6 @@
 # Square ML Demo
 
-This repository demonstrates a minimal machine learning pipeline that mirrors key responsibilities of a Senior Machine Learning Engineer. The project includes:
+This repository demonstrates a minimal machine learning pipeline that mirrors typical responsibilities of a ML Engineer. The project includes:
 
 - **Churn Prediction**: Training a logistic regression model on synthetic data.
 - **Product Recommendations**: A static endpoint that returns product recommendations.
