@@ -41,12 +41,6 @@ This repository demonstrates a minimal machine learning pipeline that mirrors ty
 ### Steps to Run Locally
 
 1. **Clone the Repository**
-- **Killercoda Access**: Obtain a Kubernetes cluster, a kubeconfig file, and the MetalLB IP range from your Killercoda setup.
-- **GitHub Account**: This project is hosted at [github.com/bkoprivica](https://github.com/bkoprivica).
-
-### Steps to Run Locally
-
-1. **Clone the Repository**
 git clone [https://github.com/bkoprivica/square-ml-demo.git](https://github.com/bkoprivica/square-ml-demo.git) 
 cd square-ml-demo
 
