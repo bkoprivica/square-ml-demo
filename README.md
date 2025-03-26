@@ -88,13 +88,9 @@ The API will be available at [http://localhost:5000](http://localhost:5000).
 
 3. **Access the Application**  
  After deployment, run:
-kubectl get svc square-ml-demo
+```kubectl get svc square-ml-demo```
 Use the external IP assigned by MetalLB to access the service (e.g., `http://<external-ip>:5000`).
 
 ## License
 
 MIT
-Triggering pipeline
-Triggering pipeline
-Triggering pipeline
-Triggering pipeline
