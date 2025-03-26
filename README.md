@@ -15,11 +15,11 @@ This repository demonstrates a minimal machine learning pipeline that mirrors ke
 ├── app.py # Flask API providing endpoints for predictions, recommendations, and text generation 
 ├── Dockerfile # Docker image build configuration 
 ├── k8s/ 
-│ ├── deployment.yaml # Kubernetes deployment manifest 
-│ └── service.yaml # Kubernetes LoadBalancer service manifest (using MetalLB) 
+│    ├── deployment.yaml # Kubernetes deployment manifest 
+│    └── service.yaml # Kubernetes LoadBalancer service manifest (using MetalLB) 
 └── .github/ 
           └── workflows/ 
-		           └── deploy.yml # GitHub Actions CI/CD pipeline configuration</pre>
+	       └── deploy.yml # GitHub Actions CI/CD pipeline configuration</pre>
 
 ## Local Development Setup
 
