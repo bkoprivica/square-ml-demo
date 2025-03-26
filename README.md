@@ -8,7 +8,7 @@ This repository demonstrates a minimal machine learning pipeline that mirrors ke
 
 ## Project Structure
 
-square-ml-demo/ 
+<pre> ```square-ml-demo/ 
 ├── README.md # Project overview and setup instructions 
 ├── requirements.txt # Python dependencies 
 ├── train_churn_model.py # Script to train and save the churn model 
@@ -19,7 +19,7 @@ square-ml-demo/
 │ └── service.yaml # Kubernetes LoadBalancer service manifest (using MetalLB) 
 └── .github/ 
           └── workflows/ 
-		           └── deploy.yml # GitHub Actions CI/CD pipeline configuration
+		           └── deploy.yml # GitHub Actions CI/CD pipeline configuration``` </pre>
 
 ## Local Development Setup
 
