@@ -42,20 +42,20 @@ This repository demonstrates a minimal machine learning pipeline that mirrors ty
 
 1. **Clone the Repository**
 git clone [https://github.com/bkoprivica/square-ml-demo.git](https://github.com/bkoprivica/square-ml-demo.git) 
-cd square-ml-demo
+`cd square-ml-demo`
 
 2. **Create and Activate a Virtual Environment**
-python3 -m venv venv 
-source venv/bin/activate
+`python3 -m venv venv` 
+`source venv/bin/activate`
 
 3. **Install Dependencies**
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 4. **Train the ML Model**
-python train_churn_model.py
+`python train_churn_model.py`
 
 5. **Run the Flask API**
-python app.py
+`python app.py`
 The API will be available at [http://localhost:5000](http://localhost:5000).
 
 ## API Endpoints
@@ -67,10 +67,10 @@ The API will be available at [http://localhost:5000](http://localhost:5000).
 ## Docker Instructions
 
 - **Build the Docker Image**
-docker build -t square-ml-demo .
+`docker build -t square-ml-demo .`
 
 - **Run the Docker Container**
-docker run -p 5000:5000 square-ml-demo
+`docker run -p 5000:5000 square-ml-demo`
 
 ## Kubernetes Deployment on Killercoda
 
